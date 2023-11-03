@@ -3,9 +3,10 @@ package com.example.MentorCode.Service;
 import com.example.MentorCode.Entity.Cursos;
 import com.example.MentorCode.Repositorio.CursosRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CSIMPL implements CursosService{
 
     @Autowired

@@ -26,8 +26,8 @@ public class Users {
     @NotBlank(message = "La contraseña no puede estar vacía")
     @Pattern(regexp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)[a-zA-Z\\d]{8,}$",
             message = "La contraseña debe tener al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número")
-    @Column(name = "Contraseña")
-    private String Contraseña;
+    @Column(name = "Contrasena")
+    private String Contrasena;
 
 
 }
