@@ -21,6 +21,7 @@ public class USIMPL implements UsersService{
 
     @Override
     public Users crearUsers(Users users) {
+        System.out.println("Estos son los usuarios :"+users);
         return this.usersRepositorio.save(users);
     }
 

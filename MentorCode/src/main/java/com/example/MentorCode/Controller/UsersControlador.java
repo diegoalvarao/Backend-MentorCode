@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/Users")
@@ -35,9 +37,11 @@ public class UsersControlador {
     //Crear usuario
     @PostMapping
     @RequestMapping(value = "crearUser", method = RequestMethod.POST)
-    public ResponseEntity<?> crearUser(@RequestBody Users users){
+    public ResponseEntity<Map<String, String>> crearUser(@RequestBody Users users){
         Users usersCrear = this.usimpl.crearUsers(users);
-        return ResponseEntity.status(HttpStatus.CREATED).body(usersCrear);
+        Map<String, String> respuestica = new HashMap<>();
+        respuestica.put("respuesta","Su usuario fue creado exitosamente");
+        return ResponseEntity.ok(respuestica);
     }
 
     //Buscar usuarios por ID
