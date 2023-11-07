@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class USIMPL implements UsersService{
@@ -21,7 +22,6 @@ public class USIMPL implements UsersService{
 
     @Override
     public Users crearUsers(Users users) {
-        System.out.println("Estos son los usuarios :"+users);
         return this.usersRepositorio.save(users);
     }
 
@@ -39,5 +39,21 @@ public class USIMPL implements UsersService{
     @Override
     public void eliminarUsers(int ID_User) {
         this.usersRepositorio.deleteById(ID_User);
+    }
+
+    @Override
+    public Users buscarEmail(String Email) {
+        return usersRepositorio.findByEmail(Email);
+    }
+
+    public boolean checkLogin(String Email, String Contrasena) {
+        // Lógica para verificar las credenciales
+        Users user = usersRepositorio.findByEmail(Email);
+
+        if (user != null && user.getContrasena().equals(Contrasena)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

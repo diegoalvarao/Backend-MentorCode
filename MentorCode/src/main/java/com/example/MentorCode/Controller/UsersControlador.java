@@ -1,5 +1,4 @@
 package com.example.MentorCode.Controller;
-
 import com.example.MentorCode.Entity.Users;
 import com.example.MentorCode.Service.USIMPL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+@CrossOrigin(origins = "http://127.0.0.1:5501")
 @RestController
 @RequestMapping("/Users")
 public class UsersControlador {
@@ -46,17 +46,17 @@ public class UsersControlador {
 
     //Buscar usuarios por ID
     @GetMapping
-    @RequestMapping(value = "buscarUser/{ID_Curso}", method = RequestMethod.GET)
-    public ResponseEntity<?> buscarUsers(@PathVariable int ID_Curso){
-        Users users = this.usimpl.buscarUsers(ID_Curso);
+    @RequestMapping(value = "buscarUser/{ID_User}", method = RequestMethod.GET)
+    public ResponseEntity<?> buscarUsers(@PathVariable int ID_User){
+        Users users = this.usimpl.buscarUsers(ID_User);
         return ResponseEntity.ok(users);
     }
 
     //Eliminar usuarios
     @DeleteMapping
-    @RequestMapping(value = "eliminarUser/{ID_Curso}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> eliminarUsers(@PathVariable int ID_Curso){
-        this.usimpl.eliminarUsers(ID_Curso);
+    @RequestMapping(value = "eliminarUser/{ID_User}", method = RequestMethod.DELETE)
+    public ResponseEntity<?> eliminarUsers(@PathVariable int ID_User){
+        this.usimpl.eliminarUsers(ID_User);
         return ResponseEntity.ok("Usuario eliminado correctamente");
     }
 }

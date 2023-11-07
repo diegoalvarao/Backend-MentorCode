@@ -1,9 +1,8 @@
 package com.example.MentorCode.Entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
+@NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.Email = :email")
 public class Users {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,6 +37,5 @@ public class Users {
     @Column(name = "Contrasena")
     @JsonProperty("Contrasena")
     private String Contrasena;
-
 
 }
